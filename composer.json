@@ -1,0 +1,41 @@
+{
+    "name": "brunocfalcao/zahper",
+    "description": "Zahper MJML Template generator",
+    "keywords": [
+        "brunocfalcao",
+        "zahper",
+        "mjml"
+    ],
+    "homepage": "https://github.com/brunocfalcao/zahper",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Bruno Falcão",
+            "email": "bruno.c.falcao@brunofalcao.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "illuminate/support": "^6.0||^7.0",
+        "guzzlehttp/guzzle": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Brunocfalcao\\Zahper\\": "src"
+        },
+        "files":
+            ["src/helpers.php"]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Brunocfalcao\\Zahper\\ZahperServiceProvider"
+            ]
+        }
+    }
+}
