@@ -101,7 +101,7 @@ class ZahperTemplate
      */
     public static function dontCache()
     {
-        static::$dontCache = false;
+        static::$dontCache = true;
     }
 
     public static function make(ZahperComponent $component, string $name = null)

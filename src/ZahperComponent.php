@@ -124,9 +124,8 @@ class ZahperComponent
          * the image accordingly to the config('zahper.image.render').
          *
          */
-
         if ($name == 'src' && config('zahper.images.render') == 'cid') {
-            $value = "{{ \\\$message->embed('{$value}') }}";
+            $value = "{{ \$message->embed('{$value}') }}";
         }
 
         $this->attributes->push(new ZahperAttribute($name, $value));
