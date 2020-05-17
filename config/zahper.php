@@ -57,7 +57,8 @@ return [
     | the next 499. Please check ZahperTempate.php for more information on this.
     |
     | 'browser' : This is where a uuid html is saved with an exact copy of the
-    | email that was sent. You can use this uuid to generate a "view in browser".
+    | email that was sent. You can use this uuid to generate a "view in browser"
+    | uuid.
     |
     | REMARK: This uuid is not saved in a database, so you can only use it in the
     | moment that zahper generates the html.
@@ -66,8 +67,8 @@ return [
 
     'storage' => [
         'paths' => [
-            // Repository for the compiled HTML to be used in the mailable views.
-            'cache' => storage_path('app/zahper/cache'),
+            // Repository for the compiled views to be used in the mailable cache.
+            'views' => storage_path('app/zahper/views'),
 
             // Repository for the "view in browser" rendered emails. They will
             // have a uuid that is connected to the uuid that was sent in the
