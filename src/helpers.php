@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('create_disk')) {
+if (! function_exists('create_disk')) {
     function create_disk($name, $path, $driver = 'local')
     {
         app('config')->set(
@@ -15,5 +15,5 @@ if (!function_exists('create_disk')) {
                 app('config')->get('filesystems.disks')
             )
         );
-    };
+    }
 }

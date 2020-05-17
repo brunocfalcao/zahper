@@ -92,7 +92,7 @@ class ZahperTemplate
                        ->render();
 
         Storage::disk('zahper-browser')->put(
-            static::$uuid . '.html',
+            static::$uuid.'.html',
             $content
         );
     }

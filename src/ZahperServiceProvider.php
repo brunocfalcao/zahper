@@ -28,7 +28,7 @@ class ZahperServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace('\Brunocfalcao\Zahper\Http\Controllers')
              ->group(function () {
-                include(__DIR__.'/routes.php');
+                 include __DIR__.'/routes.php';
              });
     }
 

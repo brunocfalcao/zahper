@@ -2,7 +2,6 @@
 
 namespace Brunocfalcao\Zahper;
 
-use Brunocfalcao\Zahper\ZahperTemplate;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\View;
 
