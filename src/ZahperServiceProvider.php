@@ -11,10 +11,10 @@ class ZahperServiceProvider extends ServiceProvider
     {
         // Register zahper disks.
         create_disk('zahper-views', app('config')->get('zahper.storage.paths.views'));
-        create_disk('zahper-browser', app('config')->get('zahper.storage.paths.browser'));
+        create_disk('zahper-browser', app('config')->get('zahper.storage.paths.emails'));
 
         // Register views, in order to be used by the Zahper Mailable.
-        //$this->loadViewsFrom(app('config')->get('zahper.storage.paths.views'), 'zahper');
+        $this->loadViewsFrom(app('config')->get('zahper.storage.paths.views'), 'zahper');
 
         $this->registerCommands();
 
@@ -34,6 +34,13 @@ class ZahperServiceProvider extends ServiceProvider
 
     public function register()
     {
+    }
+
+    protected function publishConfiguration()
+    {
+        $this->publishes([
+        __DIR__.'/../config/zahper.php' => config_path('zahper.php'),
+        ], 'zahper-config');
     }
 
     protected function registerCommands()

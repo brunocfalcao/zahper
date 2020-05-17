@@ -4,6 +4,7 @@ namespace Brunocfalcao\Zahper;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
 class ZahperTemplate
@@ -25,13 +26,11 @@ class ZahperTemplate
     protected $apiResult;
 
     /**
-     * A unique uuid generated per template instance. Used as a link for the
-     * unsubscribe feature.
-     * E.g.: /unsubscribe/{$uuid}.
+     * A generated uuid. Used as a link for the view in browser feature.
      *
      * @var string
      */
-    protected $uuid;
+    protected static $uuid;
 
     /**
      * Template name. This is based in a full namespace name and stored in
@@ -74,31 +73,65 @@ class ZahperTemplate
         // Configure template.
         $this->component = $component;
         $this->name = $this->name($name);
-        $this->uuid = (string) Str::uuid();
 
         // Compile template. Yeap. Done immediately upon object instanciation.
         $this->compile();
     }
 
     /**
-     * Stores the compiled template into a view, ready to be used by the
-     * zahper mailable. The first time it is rendered, it gets cached.
-     * At the moment it's computed the html version.
+     * Store the view rendered content.
      *
-     * $TODO: Store a text version too.
+     * @param  array|[] $viewData The mailable view data.
+     *
+     * @return void
+     */
+    public function renderAndStore(array $viewData = [])
+    {
+        $content = View::make('zahper::'.$this->getName().'-html')
+                       ->with($viewData)
+                       ->render();
+
+        Storage::disk('zahper-browser')->put(
+            static::$uuid . '.html',
+            $content
+        );
+    }
+
+    /**
+     * Stores the compiled template blade view, ready to be used by the
+     * zahper mailable. The first time it is rendered, it gets written in the
+     * storage defined in your zahper config.
      *
      * @return ZahperTemplate
      */
-    protected function store()
+    protected function storeView()
     {
         if (! blank($this->apiResult->html)) {
             Storage::disk('zahper-views')->put(
                 $this->name.'-html.blade.php',
                 $this->apiResult->html
             );
+
+            // Transform it to a text version. For now, strip all the html tags.
+            Storage::disk('zahper-views')->put(
+                $this->name.'-text.blade.php',
+                $this->convertToText(($this->apiResult->html))
+            );
         }
 
         return $this;
+    }
+
+    /**
+     * Converts the api result into text.
+     *
+     * @param  string $html The api resulted blade view html.
+     *
+     * @return void
+     */
+    protected function convertToText(string $html)
+    {
+        return strip_tags($html);
     }
 
     /**
@@ -131,7 +164,8 @@ class ZahperTemplate
     }
 
     /**
-     * Compiles an mjml into html via mjml api.
+     * Compiles an mjml into a blade view via mjml api.
+     * This html is still a blade view, that will then be parsed in the mailable.
      * Compilation occurs only if the view is not in the zahper disk cache.
      * If it exists, then it will retrieve the cached view.
      *
@@ -143,13 +177,26 @@ class ZahperTemplate
     {
         if (! $this->exists() || ! static::$cache) {
             $this->apiResult = (object) ZahperApi::compile($this->component->parse());
-            $this->store();
+            $this->storeView();
 
             return $this;
         }
 
         // Template is cached, and cache was used. Nothing to do.
         return $this;
+    }
+
+    /**
+     * Generates an uuid (for view in browser and unsubscribe).
+     *
+     * @return json
+     */
+    public static function generateUUid()
+    {
+        $uuid = Str::random(20);
+        static::$uuid = $uuid;
+
+        return $uuid;
     }
 
     public static function make(ZahperComponent $component, string $name = null)
