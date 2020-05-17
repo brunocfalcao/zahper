@@ -70,11 +70,11 @@ class ZahperComponent
         return $output;
     }
 
-
     public function parent()
     {
         return $this->parent;
     }
+
     /**
      * Adds a new component to the mjml parent component.
      *
@@ -94,15 +94,15 @@ class ZahperComponent
             } else {
                 $text = $args[0];
             }
-        };
+        }
 
         if (count($args) == 2) {
             $text = $args[0];
             $attributes = $args[1];
-        };
+        }
 
         $component = new ZahperComponent($component, $text, $attributes);
-        $component-> parent = $this;
+        $component->parent = $this;
 
         $this->components->push($component);
 
@@ -119,16 +119,7 @@ class ZahperComponent
      */
     public function attribute(string $name, string $value = null)
     {
-        /**
-         * In case an attribute key is 'src', then we need to render
-         * the image accordingly to the config('zahper.image.render').
-         *
-         */
-        if ($name == 'src' && config('zahper.images.render') == 'cid') {
-            $value = "{{ \$message->embed('{$value}') }}";
-        }
-
-        $this->attributes->push(new ZahperAttribute($name, $value));
+        $this->attributes->push(new ZahperAttribute($name, $this->parseValue($name, $value)));
 
         return $this;
     }
@@ -147,5 +138,28 @@ class ZahperComponent
         }
 
         return $this;
+    }
+
+    /**
+     * For each attribute name/value there might be a value conversion to apply.
+     * This method checks for the attribute name and in certain cases apply
+     * a value transformation. In case more are needed we just need to add
+     * them here.
+     *
+     * @param  string $name
+     * @param  string|null $value
+     *
+     * @return string
+     */
+    public function parseValue(string $name, string $value = null)
+    {
+        switch ($name) {
+            case 'src':
+                return config('zahper.images.render') == 'cid' ? "{{ \$message->embed('{$value}') }}" : $value;
+            break;
+
+            default:
+                return $value;
+        }
     }
 }

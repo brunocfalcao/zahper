@@ -2,6 +2,7 @@
 
 namespace Brunocfalcao\Zahper;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class ZahperServiceProvider extends ServiceProvider
@@ -13,12 +14,34 @@ class ZahperServiceProvider extends ServiceProvider
         create_disk('zahper-browser', app('config')->get('zahper.storage.paths.browser'));
 
         // Register views, in order to be used by the Zahper Mailable.
-        $this->loadViewsFrom(app('config')->get('zahper.storage.paths.views'), 'zahper');
+        //$this->loadViewsFrom(app('config')->get('zahper.storage.paths.views'), 'zahper');
+
+        $this->registerCommands();
+
+        $this->loadRoutes();
+
+        $this->publishConfiguration();
+    }
+
+    public function loadRoutes()
+    {
+        Route::middleware('web')
+             ->namespace('\Brunocfalcao\Zahper\Http\Controllers')
+             ->group(function () {
+                include(__DIR__.'/routes.php');
+             });
     }
 
     public function register()
     {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/zahper.php', 'zahper');
+    }
+
+    protected function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                    ZahperCreateMailableCommand::class,
+                ]);
+        }
     }
 }
