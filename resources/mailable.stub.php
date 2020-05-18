@@ -14,21 +14,18 @@ class classname extends ZahperMailable implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        // Please see ZahperTemplate.php to understand the impacts!
+        // --- Zahper code ---
         ZahperTemplate::$cache = false;
         parent::__construct();
+        // --- /Zahper code ---
     }
 
     /**
      * Automatically generates a template name based on your namespace.
      * You can tweak it to generate any name you want.
+     * Used for the cache template name for the views cache.
      *
      * @return string
      */
@@ -68,11 +65,11 @@ class classname extends ZahperMailable implements ShouldQueue
     public function build()
     {
         $this
-        ->from(
-            'you@example.com',
-            'You from Example.com'
-        )
-        ->subject('Nice subject out here!');
+            ->from(
+                'you@example.com',
+                'You from Example.com'
+            )
+            ->subject('Nice subject out here!');
 
         parent::build();
     }
