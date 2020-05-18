@@ -11,7 +11,7 @@ class ZahperCreateMailableCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'zahper:mailable {name : Mailable name}';
+    protected $signature = 'zahper:mailable {name : Mailable name} {--demo : Generates a demo Mailable}';
 
     /**
      * The console command description.
