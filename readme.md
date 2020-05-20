@@ -7,7 +7,7 @@
 
 ## About Zahper
 
-Zahper is a [Laravel](https://www.laravel.com) [MJML](https://mjml.io)-based [Mailable](https://laravel.com/docs/7.x/mail). Meaning you will have the full MJML rendering power using it directly in a Laravel Mailable.
+Zahper is a [Laravel](https://www.laravel.com) [MJML](https://mjml.io)-based [Mailable](https://laravel.com/docs/7.x/mail). You now have the full power of MJML rendering directly in a Laravel Mailable!
 
 Features:
 * Build your MJML template in an eloquent way, directly on your Mailable class
