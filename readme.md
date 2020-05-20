@@ -7,17 +7,15 @@
 
 ## About Zahper
 
-Zahper is a [Laravel](https://www.laravel.com)Laravel [MJML](https://mjml.io)-based [Mailable](https://laravel.com/docs/7.x/mail).
+Zahper is a [Laravel](https://www.laravel.com) [MJML](https://mjml.io)-based [Mailable](https://laravel.com/docs/7.x/mail). Meaning you will have the full MJML rendering power using it directly in a Laravel Mailable.
 
-Flame is a Feature Development-driven framework that will improve the way you structure and
-develop your Laravel application features.
-
-This free package will allow you to:
-* Create your features organized in a standard code-convention way, each of them inside a directory.
-* Create and re-use "intelligent" widgets, called Twinkles, that will make you improve your layout code structure.
-* Render Panels and Twinkles automatically given the route action that it's being called at a request.
-* Be able to execute Twinkle controller actions prior to its rendering on the screen.
-* Structure your application as feature modules, having a much better code readability, structure and reusability!
+Features:
+* Build your MJML template in an eloquent way, directly on your Mailable class
+* Automatic MJML compilation via the [MJML Api](https://mjml.io/api)
+* Caching mechanism, so you don't make 500 Api calls, when you send 500 emails
+* Automatic "view in browser" link generation, in case you want to redirect your users to view the email in the browser
+* Already being used in masteringnova.com, Laraning and Laraflash.
+*
 
 ## Why Flame
 
