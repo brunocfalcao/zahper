@@ -7,6 +7,8 @@
 
 ## About Zahper
 
+Zahper is a [Laravel](https://www.laravel.com)Laravel [MJML](https://mjml.io)-based [Mailable](https://laravel.com/docs/7.x/mail).
+
 Flame is a Feature Development-driven framework that will improve the way you structure and
 develop your Laravel application features.
 
