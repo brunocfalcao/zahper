@@ -1,4 +1,4 @@
-<p align="center"><img src="https://assets.waygou.com/zahper-github-header.jpg" width="150"></p>
+<p align="center"><img src="https://assets.waygou.com/zahper-github-header_v2.jpg" width="150"></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/brunocfalcao/zahper"><img src="https://poser.pugx.org/brunocfalcao/zahper/v/stable.svg" alt="Latest Stable Version"></a>
