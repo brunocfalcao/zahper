@@ -7,13 +7,26 @@
 
 ## About Zahper
 
-Zahper is a [Laravel](https://www.laravel.com) [MJML](https://mjml.io)-based [Mailable](https://laravel.com/docs/7.x/mail). You now have the full power of MJML rendering directly in a Laravel Mailable!
+Zahper is a Laravel on-steroids Mailable that let's you create cross-browser email newsletters using MJML.
 
-Features:
+## Why Zahper
+
+Zahper will solve you these problems:
+* Frustration of creating email templates, and at the end verifying they are not browser-compatible
+* Annoyance of having to recreate email templates without a common base template structure to kick off
+* Complexity of creating view in browser logic, ensuring a storage/db model
+* Rebuilding a Laravel package to send emails.
+
+## Zahper Features
+
+
+You get all of this out-of-the-box:
 * Build your MJML template in an eloquent way, directly on your Mailable class
 * Automatic MJML compilation via the [MJML Api](https://mjml.io/api)
 * Caching mechanism, so you don't make 500 Api calls, when you send 500 emails
 * Automatic "view in browser" link generation, in case you want to redirect your users to view the email in the browser
+* High customizable (storage and views cache, image rendering types, etc) via a config file
+* Automatic image CID / URL rendering
 * Already being used in masteringnova.com, Laraning and Laraflash.
 *
 
