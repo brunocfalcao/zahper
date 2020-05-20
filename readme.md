@@ -7,7 +7,7 @@
 
 ## About Zahper
 
-Zahper is a [Laravel](https://www.laravel.com) *on-steroids* Mailable that lets you create breautiful cross-browser email newsletters using [MJML](https://mjml.io).
+Zahper is a [Laravel](https://www.laravel.com) *on-steroids* Mailable that lets you create beautiful cross-browser email newsletters using [MJML](https://mjml.io).
 
 ## Why Zahper
 
@@ -19,7 +19,6 @@ Zahper will solve you these problems:
 
 ## Zahper Features
 
-
 You get all of this out-of-the-box:
 * Build your MJML template in an eloquent way, directly on your Mailable class, using all the MJML features and components.
 * Automated MJML to Blade view compilation via the [MJML Api](https://mjml.io/api).
@@ -27,22 +26,12 @@ You get all of this out-of-the-box:
 * Automatic "view in browser" link generation, in case you want to redirect your users to view the email in the browser.
 * High customizable (storage and views cache, image rendering types, etc) via a config file.
 * Automatic image [CID / URL](https://laravel.com/docs/7.x/mail#inline-attachments) rendering.
-* Already being used in masteringnova.com, Laraning and Laraflash.
-* You can also use the full Mailable capabilites since Zahper directly inherits from the Laravel [Mailable](https://laravel.com/docs/7.x/mail) class.
-
-## Why Flame
-
-I've built Flame because I was starting to have medium size web apps (like [Laraning](https://www.laraning.com) or [Laraflash](https://www.laraflash.com)) with a lot of Blade views, Blade Components, etc.
-It was starting to be difficult to organize my features in a way that I could load data inside those views given for the respective controller action that I was running at a certain moment.
-
-> A thought came to me: "What if I have a way to know automatically what actions am I running and then automatically load my graphical
-layout accordingly to that action, reusing the layout and not just create more and more views?"
-
-That's where Flame started. Flame will automate this behaviour for you. Let's see how.
+* Already being used in [masteringnova.com](https://www.masteringnova.com), [Laraning](https://www.laraning.com) and [Laraflash](https://www.laraflash.com).
+* You can also use the full original Mailable class capabilites since Zahper inherits from the Laravel [Mailable](https://laravel.com/docs/7.x/mail) class.
 
 ## Installation
 
-You can install this package via composer using this command:
+You can install Zahper via composer using this command:
 
 ```bash
 composer require brunocfalcao/zahper
