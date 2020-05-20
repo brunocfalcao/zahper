@@ -37,13 +37,35 @@ You can install Zahper via composer using this command:
 composer require brunocfalcao/zahper
 ```
 
-###### The package will automatically register itself (using [auto-discover](https://laravel-news.com/package-auto-discovery)).
+###### The package will automatically register the service provider (using [auto-discover](https://laravel-news.com/package-auto-discovery)).
 
 Next step is to publish the flame.php configuration file into your config folder.
 
 ```bash
-php artisan vendor:publish --tag=flame-configuration
+php artisan vendor:publish --tag=zahper-config
 ```
+
+Final step is to install your mjml.io api keys in your .ENV configuration.
+
+```bash
+ZAHPER_API_URL=https://api.mjml.io/v1/render
+ZAHPER_API_APPLICATION_ID=<your application id>
+ZAHPER_API_SECRET_KEY=<your secret key>
+```
+##### :point_right: You need to register for the Api keys for your [MJML api application here](https://mjml.io/api/).
+
+## No time to wait?
+
+After having your api keys in your .ENV file, just do this for a quick email demo:
+
+Run the following artisan command:
+```bash
+php artisan zahper:mailable DemoEmail --demo
+```
+
+Go to your routes folder
+
+
 
 All done! :smile:
 
