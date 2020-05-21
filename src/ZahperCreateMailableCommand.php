@@ -57,10 +57,16 @@ class ZahperCreateMailableCommand extends Command
 
         $filePath = $path.$this->argument('name').'.php';
 
+        if ($this->option('demo')) {
+            $file = 'mailable-demo';
+        } else {
+            $file = 'mailable';
+        }
+
         $content = str_replace(
             'classname',
             $this->argument('name'),
-            file_get_contents(__DIR__.'/../resources/mailable.stub.php')
+            file_get_contents(__DIR__."/../resources/{$file}.stub.php")
         );
 
         file_put_contents($filePath, $content);

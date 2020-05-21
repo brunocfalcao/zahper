@@ -7,7 +7,7 @@
 
 ## About Zahper
 
-Zahper is a Laravel on-steroids Mailable that let's you create cross-browser email newsletters using MJML.
+Zahper is a Laravel Mailable on-steroids that let's you create cross-browser email newsletters using [MJML](https://mjml.io).
 
 ## Why Zahper
 

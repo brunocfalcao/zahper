@@ -50,10 +50,6 @@ class classname extends ZahperMailable implements ShouldQueue
 
         $body = $mjml->with('mj-body');
 
-        $body->with('mj-section')
-                ->with('mj-column')
-                    ->with('mj-text', 'Hi {{ $zhp_uuid }}!');
-
         return $mjml;
     }
 

@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\Route;
 |
 | There is only one route create:
 |
-| [GET] /email/view/{uuid}
+| [GET] zahper/view/{uuid}
 | Used to show the email in the browser, so you can have the "view in browser"
 | functionality.
 |
 */
 
-Route::get('email/view/{uuid}', 'ZahperController@view');
+Route::get('zahper/view/{uuid}', 'ZahperController@view');
+
+if (config('zahper.demo')) {
+    Route::get('zahper/demo', 'ZahperController@demo');
+}

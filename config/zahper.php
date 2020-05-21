@@ -4,6 +4,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Zahper demo route
+    |--------------------------------------------------------------------------
+    |
+    | Want to see zahper in action in a demo?
+    | Just write the command:
+    | php artisan zahper:mailable ZahperDemo --demo
+    |
+    | Then open the browser and go to url:
+    | <your-host>/zahper/demo
+    |
+    | Enjoy :)
+    */
+
+    'demo' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | MJML API configuration
     |--------------------------------------------------------------------------
     |
@@ -38,7 +55,8 @@ return [
         |   ->href('http://www.example.com/image.jpg')
         |
         | If you are using 'cid', then this url will be converted using the CID
-        | attachment, as explained here: https://laravel.com/docs/7.x/mail#inline-attachments
+        | attachment, as explained here:
+        | https://laravel.com/docs/7.x/mail#inline-attachments
         |
         */
 

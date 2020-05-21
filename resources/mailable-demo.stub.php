@@ -51,11 +51,65 @@ class classname extends ZahperMailable implements ShouldQueue
 
         $head = $mjml->with('mj-head');
 
-        $body = $mjml->with('mj-body');
+        $head->with('mj-preview', 'Zahper Demo')
+                ->parent()
+             ->with('mj-style', ".text-link { color: #FFFFFF }")
+                ->inline('inline')
+                ->parent()
+             ->with('mj-font')
+                ->name('Nunito')
+                ->href('https://fonts.googleapis.com/css?family=Nunito')
+                ->parent()
+             ->with('mj-attributes')
+                ->with('mj-all')
+                    ->fontFamily('Nunito')
+                    ->fontSize('0.90rem')
+                    ->letterSpacing('0.04rem')
+                    ->lineHeight('1.5rem')
+                    ->padding('0px');
 
+        $body = $mjml->with('mj-body')
+                        ->backgroundColor('#2d3748')
+                        ->width('800px')
+                        ->with('mj-section')
+                            ->with('mj-column')
+                                ->with('mj-spacer')
+                                    ->height('50px')
+                                    ->parent()
+                                ->parent()
+                            ->parent()
+                        ->with('mj-section')
+                            ->with('mj-column')
+                                ->backgroundColor('#ED8936')
+                                ->with('mj-text', '&#8212;&#8212;&nbsp;Zahper')
+                                    ->letterSpacing('0px')
+                                    ->align('right')
+                                    ->paddingRight('50px')
+                                    ->paddingTop('25px')
+                                    ->paddingBottom('25px')
+                                    ->fontSize('25px')
+                                    ->color('#FFFFFF')
+                                    ->parent()
+                                ->parent()
+                            ->parent()
+                        ->with('mj-section')
+                            ->padding('40px')
+                            ->backgroundColor('#FFFFFF')
+                                ->with('mj-column')
+                                    ->with('mj-text', 'Hi there!')
+                                        ->align('center')
+                                        ->color('#1A202C')
+                                        ->fontSize('20px')
+
+                                            ;
+
+
+
+        /*
         $body->with('mj-section')
                 ->with('mj-column')
                     ->with('mj-text', 'Hi {{ $zhp_uuid }}!');
+        */
 
         return $mjml;
     }

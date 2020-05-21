@@ -3,6 +3,7 @@
 namespace Brunocfalcao\Zahper\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\DemoEmail;
 use Illuminate\Support\Facades\File;
 
 class ZahperController extends Controller
@@ -10,6 +11,11 @@ class ZahperController extends Controller
     public function __construct()
     {
         $this->middleware('throttle:10,1');
+    }
+
+    public function demo()
+    {
+        return new DemoEmail();
     }
 
     /**

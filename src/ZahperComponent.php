@@ -76,10 +76,11 @@ class ZahperComponent
     }
 
     /**
-     * Adds a new component to the mjml parent component.
+     * Adds a new child component to the current component.
      *
-     * @param  string Component name
+     * @param  string Child component name
      * @param  mixed [string title | array attributes ]
+     * @param  array attributes
      *
      * @return ZahperComponent
      */
@@ -87,6 +88,14 @@ class ZahperComponent
     {
         $text = null;
         $attributes = [];
+
+        /**
+         * We can have a with(<component>)
+         * or
+         * We can have a with(<component>, <inner text>)
+         * or
+         * We can have a with(<component>, <inner text>, <attributes array>)
+         */
 
         if (count($args) == 1) {
             if (is_array($args[0])) {
@@ -101,12 +110,12 @@ class ZahperComponent
             $attributes = $args[1];
         }
 
-        $component = new ZahperComponent($component, $text, $attributes);
-        $component->parent = $this;
+        $childComponent = new ZahperComponent($component, $text, $attributes);
+        $childComponent->parent = $this;
 
-        $this->components->push($component);
+        $this->components->push($childComponent);
 
-        return $component;
+        return $childComponent;
     }
 
     /**
@@ -134,6 +143,7 @@ class ZahperComponent
         if (count($parameters) == 0) {
             $this->attribute(Str::kebab($method));
         } else {
+            // There can be only one parameter for now.
             $this->attribute(Str::kebab($method), $parameters[0]);
         }
 
@@ -161,5 +171,10 @@ class ZahperComponent
             default:
                 return $value;
         }
+    }
+
+    public function __toString()
+    {
+        return $this->parse();
     }
 }
