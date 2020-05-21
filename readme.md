@@ -193,6 +193,10 @@ is written like:
                            ->fontSize('20px')
 ```
 
+The way is natural. Meaning you create your component, then if you want to add a child component you use the ->with(), and if you want to pass properties, you just keep adding them as methods. You just need to respect that attribute name convention, like "background-color" should be ->backgroundColor(). And that's it ! Zahper then converts it to a pure MJML, calls the MJML Api to convert it to a blade view, and calls the ->build() Mailable method.
+
+
+
 ## Current development status
 - [x] Finish core development.
 - [ ] Finish identified issues/improvements for Alpha release 0.1.x.
