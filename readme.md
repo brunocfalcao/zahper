@@ -83,95 +83,17 @@ php artisan zahper:mailable WelcomeMailable
 
 > This command will create your Mailable in the app\Mail folder.
 
-2. Your create zahper mailable will have the following methods:
-
-
-
-
-
-
-
-Create a new feature using the following command:
-
-```bash
-php artisan make:feature
-```
-
-Select the "flame" namespace group, then create a "Manage Cars" feature, and the action "index".
-At the end, the route example that the command give you will be:
-
-```bash
-Route::get('manage-cars', '\App\Flame\Features\ManageCars\Controllers\ManageCarsController@index')
-     ->name('manage-cars.index');
-```
-
-##### :point_right: Copy+Paste this route example to your web.php file (or other route file you're using with web middleware).
-
-##### :floppy_disk: A new folder "ManagesCars" is created inside your "app\Flame\Features" folder.
-
-#### Feature "Manage Cars" file structure
-
-```bash
-  + ManageCars
-    + Controllers
-      > ManageCarsController.php
-      > WelcomeController.php
-    + Panels
-      > index.blade.php
-    + Twinkles
-      > welcome.blade.php
-```
-
-Let's now see what was scaffolded on each of those files. The magic starts :heart: !
-
-##### Controllers/ManageCarsController.php
-
+2. Inside your zahper mailable, you should check the following methods:
 ```php
-class ManageCarsController extends Controller
-{
-    public function index()
+
+    public function __construct()
     {
-        return flame();
+        // --- Zahper code ---
+        ZahperTemplate::$cache = false;
+        [...]
+        // --- /Zahper code ---
     }
 ```
-
- :tada: This is where you mapped your route file You just need to return the flame() helper so Flame will load your respective
-Panel and Twinkles for the "index" action. Meaning, if your Twinkles have the "index" action defined, they will run prior
-to the Panel content rendering.
-
-> In case you don't have a Panel with the same name, then it will fall back to default.blade.php. If you have a Panel with this name, it will be loaded for all of your actions that don't have a specific Panel action. Double sweet!
-
-##### Panels/welcome.blade.php
-
-```blade
-@twinkle('welcome')
-```
-
-The Twinkle works like an "intelligent widget". It will render content defined in your Twinkes/ folder, given the argument passed.
-In this case, the Twinkle will load the "welcome.blade.php".
-
-BUT! More magic happens :heart: ...
-
-Before rendering the Twinkle, it will try to find its own respective controller (studly case) name. In our case we do have it
-in the Controllers/WelcomeController.php, so let's check it:
-
-##### Controllers/WelcomeController.php
-
-```php
-class WelcomeController extends Controller
-{
-    public function index()
-    {
-        return ['text' => 'Hi there! This is a Twinkle!'];
-    }
-```
-
-Since there is the same action defined for the current route action running, it will use reflection to run the method and
-pass the data as an array. So you can then use it inside your Twinkle as a [Blade variable](https://laravel.com/docs/5.7/blade#displaying-data).
-Meaning on this case, it will run the "index" method and return the data to the Welcome Twinkle.
-
-> The Twinkle methods also work with implicit binding. Meaning if you define your arguments from the route parameters they will be
-dynamically injected into your method arguments!
 
 ## Current development status
 - [x] Finish core development.
@@ -184,24 +106,9 @@ dynamically injected into your method arguments!
 - [ ] Finalize video tutorials.
 - [ ] Release for General Public use.
 
-## Getting started
-
-Flame creates a demo route on your /flame url. You can try it and should see:
-<p align="center"><img src="https://flame.brunofalcao.me/assets/github/preview.jpg" width="400"></p>
-
-This means that you have can see the Demo feature located in the Brunocfalcao\Flame\Features\Demo namespace.
-
-## Creating your first Feature
-
-Simple as this. Just write the following command:
-
-```bash
-php artisan make:feature
-```
-
 ## Contributing
 
-At the moment you don't need to contribute since Flame is still in development.
+At the moment you don't need to contribute since Zahper is still in early-production release. You can already use it in your production website but still pay attention to my repository for issues that might impact you.
 
 ## License
 
