@@ -76,12 +76,15 @@ Additionally it leverages the full features of the Laravel Mailable that you can
 ## How to use Zahper
 
   
-Start by creating your zahper mailable using the following example:
+1. Start by creating your zahper mailable using the following example:
 ```bash
 php artisan zahper:mailable WelcomeMailable
 ```
 
 > This command will create your Mailable in the app\Mail folder.
+
+2. Your create zahper mailable will have the following methods:
+
 
 
 
