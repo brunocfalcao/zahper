@@ -24,7 +24,7 @@ class ZahperController extends Controller
      *
      * @param  string $uuid
      *
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function view(string $uuid)
     {
@@ -35,6 +35,8 @@ class ZahperController extends Controller
             return response(file_get_contents($filePath), 200)
                    ->header('Content-Type', 'text/html');
         }
+
+        return response('No UUID found.', 200);
     }
 
     /**
@@ -45,7 +47,7 @@ class ZahperController extends Controller
      *
      * @param  string $uuid
      *
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function unsubscribe(string $uuid)
     {

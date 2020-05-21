@@ -170,7 +170,7 @@ class classname extends ZahperMailable implements ShouldQueue
     /**
      * Build the message.
      *
-     * @return $this
+     * @return void
      */
     public function build()
     {

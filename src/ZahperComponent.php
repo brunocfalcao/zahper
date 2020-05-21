@@ -78,9 +78,8 @@ class ZahperComponent
     /**
      * Adds a new child component to the current component.
      *
-     * @param  string Child component name
-     * @param  mixed [string title | array attributes ]
-     * @param  array attributes
+     * @param  string $component
+     * @param  array ...$args
      *
      * @return ZahperComponent
      */
@@ -121,8 +120,8 @@ class ZahperComponent
     /**
      * Adds a single attribute to the component.
      *
-     * @param  string Attribute name
-     * @param  string|null Attribute value
+     * @param  string $name
+     * @param  string $value
      *
      * @return ZahperComponent
      */
@@ -166,7 +165,6 @@ class ZahperComponent
         switch ($name) {
             case 'src':
                 return config('zahper.images.render') == 'cid' ? "{{ \$message->embed('{$value}') }}" : $value;
-            break;
 
             default:
                 return $value;

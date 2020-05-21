@@ -5,7 +5,7 @@ namespace Brunocfalcao\Zahper;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\View;
 
-class ZahperMailable extends Mailable
+abstract class ZahperMailable extends Mailable
 {
     public $zhp_uuid;
 
@@ -28,5 +28,13 @@ class ZahperMailable extends Mailable
             ->text('zahper::'.$template->getName().'-text');
 
         return $output;
+    }
+
+    protected function template()
+    {
+    }
+
+    protected function templateName()
+    {
     }
 }

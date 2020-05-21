@@ -21,7 +21,7 @@ class ZahperTemplate
      *
      * @see https://mjml.io/api/documentation/
      *
-     * @var json
+     * @var object
      */
     protected $apiResult;
 
@@ -68,11 +68,11 @@ class ZahperTemplate
      */
     public static $cache = false;
 
-    public function __construct(ZahperComponent $component, $name = null)
+    public function __construct(ZahperComponent $component, $name)
     {
         // Configure template.
         $this->component = $component;
-        $this->name = $this->name($name);
+        $this->name = $this->setName($name);
 
         // Compile template. Yeap. Done immediately upon object instanciation.
         $this->compile();
@@ -81,7 +81,7 @@ class ZahperTemplate
     /**
      * Store the view rendered content.
      *
-     * @param  array|[] $viewData The mailable view data.
+     * @param  array $viewData The mailable view data.
      *
      * @return void
      */
@@ -127,7 +127,7 @@ class ZahperTemplate
      *
      * @param  string $html The api resulted blade view html.
      *
-     * @return void
+     * @return string
      */
     protected function convertToText(string $html)
     {
@@ -152,14 +152,14 @@ class ZahperTemplate
      *
      * @param  string $name given name.
      *
-     * @return void
+     * @return string
      */
-    protected function name($name = null)
+    protected function setName($name = null)
     {
         if (! is_null($name)) {
             return strtolower(strtr($name, ['\\' => '-', '/' => '-']));
         } else {
-            Str:random(10);
+            return Str::random(10);
         }
     }
 
@@ -171,7 +171,7 @@ class ZahperTemplate
      *
      * @see https://mjml.io/api/documentation/
      *
-     * @return stdClass|ZahperTemplate
+     * @return object|ZahperTemplate
      */
     protected function compile()
     {
@@ -189,7 +189,7 @@ class ZahperTemplate
     /**
      * Generates an uuid (for view in browser and unsubscribe).
      *
-     * @return json
+     * @return string
      */
     public static function generateUUid()
     {
@@ -207,11 +207,11 @@ class ZahperTemplate
     /**
      * Returns the mjml api results.
      *
-     * @return json
+     * @return string
      */
     public function getResults()
     {
-        return $this->apiResults;
+        return $this->apiResult;
     }
 
     /**
