@@ -315,3 +315,8 @@ At the moment you don't need to contribute since Zahper is still in early-produc
 ## License
 
 Zahper is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## How to follow me
+
+You can follow my work on twitter, [@brunocfalcao](https://twitter.com/brunocfalcao). :)
