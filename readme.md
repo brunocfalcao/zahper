@@ -193,7 +193,32 @@ is written like:
                            ->fontSize('20px')
 ```
 
-The way is natural. Meaning you create your component, then if you want to add a child component you use the ->with(), and if you want to pass properties, you just keep adding them as methods. You just need to respect that attribute name convention, like "background-color" should be ->backgroundColor(). And that's it ! Zahper then converts it to a pure MJML, calls the MJML Api to convert it to a blade view, and calls the ->build() Mailable method.
+The way is natural. Meaning you create your component, then if you want to add a child component you use the ->with(), and if you want to pass properties, you just keep adding them as methods. You just need to respect that attribute name convention, like "background-color" should be ->backgroundColor(). And that's it ! Zahper then converts it to a pure MJML, calls the MJML Api to convert it to a blade view, and calls the ->build() Mailable method!
+
+## Cache strategy
+
+Zahper needs to have a caching strategy since when you are sending a high volume of emails we cannot just call the MJML Api to convert the same MJML over and over. You can suddenly see your MJML Api account blocked in case spikes occur. So, Zahper allows you to cache your blade view so the next time the same Mailable class is called it doesn't recompile the mjml, but just uses the cached view content.
+
+### Things you need to pay attention
+
+#### Activating the Zahper Mailable cache
+
+The way you turn on, or off the Mailable cache is in your generated Zahper Mailable, in the construct() method:
+
+```php
+    public function __construct()
+    {
+        // --- Zahper code ---
+        ZahperTemplate::$cache = false;
+        // [...]
+        // --- /Zahper code ---
+    }
+```
+
+You should keep it off until you have your newsletter struture all fine tuned. Then you turn it on and the MJML Api, for this Mailable, will not be called again until you turn it on again.
+
+
+
 
 
 
