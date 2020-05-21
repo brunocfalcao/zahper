@@ -267,6 +267,18 @@ Also, you have a helper that will generate the full url for you, so you can use 
 
 Like the View in Browser, the UUID is also used for the unsubscribe. Zahper will have a default route that you can use, but the action doesn't do more than calling an event. So it's up to you to inject a listener.
 
+ZahpController@unsubscribe action:
+
+```php
+    public function unsubscribe(string $uuid)
+    {
+        event(new ZahperUnsubscribeEvent($uuid));
+
+        return response('Thank you, you have been unsubscribed!', 200);
+    }
+```
+
+
 
 ## Current development status
 - [x] Finish core development.
