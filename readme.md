@@ -219,14 +219,24 @@ The way you turn on, or off the Mailable cache is in your generated Zahper Maila
 
 #### Using dynamic values on your Zahper Mailable
 
-Let's say you want to have, for instance, a dynamic URL in a Button href attribute.
+Let's say you want to have, for instance, a dynamic URL in a Button href attribute with a distinct user id per email.
 
 ```mjml
-    <mj-button href="{{ $myurl }}">Click here to Browse</mj-button>
+    <mj-button href="{{ route('welcome', ['user_id' => $id]) }}">Click here to Browse</mj-button>
 ```
 
+You then should write it this way:
 
+```php
+    $button = ZahperComponent::make('mj-button')
+                ->href("{{ route('welcome', ['user_id' => \$id]) }}")
+```
 
+:exclamation: If you write it this way below, the user id will get cached!
+```php
+    $button = ZahperComponent::make('mj-button')
+                ->href(route('welcome', ['user_id' => \$id]))
+```
 
 
 
