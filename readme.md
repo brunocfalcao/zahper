@@ -170,7 +170,7 @@ Coding your MJML is made in a very natural way.
     $body = ZahperComponent::make('mj-section', ['align' => 'center');
 ```
 
-Let's see another examples, so you can learn better:
+Let's see another examples, so you can learn it better:
 
 ```mjml
     <mj-section padding="40px" background-color="#FFFFFF">
@@ -193,9 +193,36 @@ is written like:
                            ->fontSize('20px')
 ```
 
-The way is natural. Meaning you create your component, then if you want to add a child component you use the ->with(), and if you want to pass properties, you just keep adding them as methods. You just need to respect that attribute name convention, like "background-color" should be ->backgroundColor(). And that's it ! Zahper then converts it to a pure MJML, calls the MJML Api to convert it to a blade view, and calls the ->build() Mailable method!
+The coding way is "natural". Meaning you create your component, then if you want to add a child component you use the ->with(), and if you want to pass properties, you just keep adding them as methods. You just need to respect that attribute name convention, like "background-color" should be ->backgroundColor(). And that's it ! Zahper then converts it to a pure MJML, calls the MJML Api to convert it to a blade view, and calls the ->build() Mailable method!
 
-## Cache strategy
+:question: What happens if you want to code 2 columns?
+
+Simple. You have a ->parent() method that goes 1 level in the MJML hierarchy :blush:
+
+```mjml
+    <mj-section padding="40px" background-color="#FFFFFF">
+        <mj-column>
+            <mj-text>First Column</mj-text>
+        </mj-column>
+        <mj-column>
+            <mj-text>Second Column</mj-text>
+        </mj-column>
+    </mj-section>
+```
+
+is written like:
+
+```php
+    $section = ZahperComponent::make('mj-section')
+                   ->with('mj-column')
+                       ->with('mj-text', 'First Column')
+                           ->parent()
+                       ->parent()
+                   ->with('mj-column')
+                       ->with('mj-text', 'Second Column');
+```
+
+## Caching strategy
 
 Zahper needs to have a caching strategy since when you are sending a high volume of emails we cannot just call the MJML Api to convert the same MJML over and over. You can suddenly see your MJML Api account blocked in case spikes occur. So, Zahper allows you to cache your blade view so the next time the same Mailable class is called it doesn't recompile the mjml, but just uses the cached view content.
 
