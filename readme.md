@@ -39,7 +39,7 @@ composer require brunocfalcao/zahper
 
 ###### The package will automatically register the service provider (using [auto-discover](https://laravel-news.com/package-auto-discovery)).
 
-Next step is to publish the zahper.php configuration file into your config folder.
+Next step is to publish your zahper.php configuration.
 
 ```bash
 php artisan vendor:publish --tag=zahper-config
@@ -52,7 +52,7 @@ ZAHPER_API_URL=https://api.mjml.io/v1/render
 ZAHPER_API_APPLICATION_ID=<your application id>
 ZAHPER_API_SECRET_KEY=<your secret key>
 ```
-##### :point_right: You need to register for the Api keys for your [MJML api application here](https://mjml.io/api/).
+##### :point_right: You need to register for the Api keys for your [MJML api application here](https://mjml.io/api/). It's free.
 
 ## No time to wait?
 
@@ -60,18 +60,33 @@ After having your api keys in your .ENV file, just do this for a quick email dem
 
 Run the following artisan command:
 ```bash
-php artisan zahper:mailable DemoEmail --demo
+php artisan zahper:demo
 ```
 
 Navigate in your local laravel app to the url /zahper/demo. [Et voilá](https://www.deepl.com/translator#fr/en/et%20voil%C3%A1!%7CThere%20you%20go.), you should see a mailable demo.
 
-
-
-All done! :smile:
+<p align="center"><img src="https://assets.waygou.com/zahper-demo.jpg" width="500px"></p>
 
 ## How it works
 
-> The flame.php configuration file already have an entry to put all your features in the App\Flame\Features namespace.
+Zahper uses the power of MJML syntax to render an HTML email that will be cross-browser compatible. To do this, you first need to learn MJML, and believe me it's pretty straight forward. You can check the [documentation here](https://mjml.io/documentation/).
+
+Additionally it leverages the full features of the Laravel Mailable that you can use. So, it's 100% compatible with any Mailable-based codebase you did.
+
+## How to use Zahper
+
+  
+Start by creating your zahper mailable using the following example:
+```bash
+php artisan zahper:mailable WelcomeMailable
+```
+
+> This command will create your Mailable in the app\Mail folder.
+
+
+
+
+
 
 Create a new feature using the following command:
 
