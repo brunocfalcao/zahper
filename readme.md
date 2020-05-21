@@ -170,6 +170,28 @@ Coding your MJML is made in a very natural way.
     $body = ZahperComponent::make('mj-section', ['align' => 'center');
 ```
 
+Let's see another examples, so you can learn better:
+
+```mjml
+    <mj-section padding="40px" background-color="#FFFFFF">
+        <mj-column>
+            <mj-text align="center" color="#1a202c" font-size="20px">Hey there!</mj-text>
+        </mj-column>
+    </mj-section>
+```
+
+is written like:
+
+```php
+    $section = ZahperComponent::make('mj-section')
+               ->padding('40px')
+               ->backgroundColor('#FFFFFF')
+                   ->with('mj-column')
+                       ->with('mj-text', 'Hey there!')
+                           ->align('center')
+                           ->color('#1A202C')
+                           ->fontSize('20px')
+```
 
 ## Current development status
 - [x] Finish core development.
