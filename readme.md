@@ -1,10 +1,5 @@
 <p align="center"><img src="https://assets.waygou.com/zahper-github-header_v2.jpg" width="130"></p>
 
-<p align="center">
-<a href="https://packagist.org/packages/brunocfalcao/zahper"><img src="https://poser.pugx.org/brunocfalcao/zahper/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/brunocfalcao/zahper"><img src="https://poser.pugx.org/brunocfalcao/zahper/license.svg" alt="License"></a>
-</p>
-
 ## About Zahper
 
 Zahper is a [Laravel](https://www.laravel.com) *on-steroids* Mailable that lets you create beautiful cross-browser email newsletters using [MJML](https://mjml.io).
