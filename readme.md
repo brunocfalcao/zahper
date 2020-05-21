@@ -197,7 +197,7 @@ The coding way is "natural". Meaning you create your component, then if you want
 
 :question: What happens if you want to code 2 columns?
 
-Simple. You have a ->parent() method that goes 1 level in the MJML hierarchy :blush:
+Simple. You have a ->parent() method that will point one level up in the MJML hierarchy :blush:
 
 ```mjml
     <mj-section padding="40px" background-color="#FFFFFF">
@@ -305,18 +305,12 @@ ZahpController@unsubscribe action:
     }
 ```
 
-
-
 ## Current development status
 - [x] Finish core development.
-- [ ] Finish identified issues/improvements for Alpha release 0.1.x.
-- [ ] Close Alpha (0.1.x) release.
-- [ ] Finish identified issues/improvements for Beta release 0.2.x.
-- [ ] Close Beta (0.2.x) release.
-- [ ] Test coverage > 90%.
-- [ ] Finalize documentation.
-- [ ] Finalize video tutorials.
-- [ ] Release for General Public use.
+- [x] Finish testing in production environments.
+- [x] Close Beta release.
+- [ ] Additional testing in multi-parallelism using job queues.
+- [x] Release for General Public use.
 
 ## Contributing
 
