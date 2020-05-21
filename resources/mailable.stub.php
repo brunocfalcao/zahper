@@ -47,8 +47,10 @@ class classname extends ZahperMailable implements ShouldQueue
         $mjml = ZahperComponent::make();
 
         $head = $mjml->with('mj-head');
+        // $head->with(...)
 
         $body = $mjml->with('mj-body');
+        // $body->with(...)
 
         return $mjml;
     }

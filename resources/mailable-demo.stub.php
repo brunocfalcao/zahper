@@ -51,16 +51,13 @@ class classname extends ZahperMailable implements ShouldQueue
 
         $head = $mjml->with('mj-head');
 
-        $head->with('mj-preview', 'Zahper Demo')
-                ->parent()
-             ->with('mj-style', ".text-link { color: #FFFFFF }")
-                ->inline('inline')
-                ->parent()
-             ->with('mj-font')
+        $head->with('mj-preview', 'Zahper Demo');
+        $head->with('mj-style', ".text-link { color: #FFFFFF }");
+        $head->with('mj-font')
                 ->name('Nunito')
-                ->href('https://fonts.googleapis.com/css?family=Nunito')
-                ->parent()
-             ->with('mj-attributes')
+                ->href("https://fonts.googleapis.com/css?family=Nunito");
+
+        $head->with('mj-attributes')
                 ->with('mj-all')
                     ->fontFamily('Nunito')
                     ->fontSize('0.90rem')
@@ -70,46 +67,102 @@ class classname extends ZahperMailable implements ShouldQueue
 
         $body = $mjml->with('mj-body')
                         ->backgroundColor('#2d3748')
-                        ->width('800px')
-                        ->with('mj-section')
-                            ->with('mj-column')
-                                ->with('mj-spacer')
-                                    ->height('50px')
-                                    ->parent()
-                                ->parent()
-                            ->parent()
-                        ->with('mj-section')
-                            ->with('mj-column')
-                                ->backgroundColor('#ED8936')
-                                ->with('mj-text', '&#8212;&#8212;&nbsp;Zahper')
-                                    ->letterSpacing('0px')
-                                    ->align('right')
-                                    ->paddingRight('50px')
-                                    ->paddingTop('25px')
-                                    ->paddingBottom('25px')
-                                    ->fontSize('25px')
-                                    ->color('#FFFFFF')
-                                    ->parent()
-                                ->parent()
-                            ->parent()
-                        ->with('mj-section')
-                            ->padding('40px')
-                            ->backgroundColor('#FFFFFF')
-                                ->with('mj-column')
-                                    ->with('mj-text', 'Hi there!')
-                                        ->align('center')
-                                        ->color('#1A202C')
-                                        ->fontSize('20px')
+                        ->width('800px');
 
-                                            ;
-
-
-
-        /*
+        // Header spacer.
         $body->with('mj-section')
                 ->with('mj-column')
-                    ->with('mj-text', 'Hi {{ $zhp_uuid }}!');
-        */
+                    ->with('mj-spacer')
+                        ->height('50px');
+
+        // Zahper header.
+        $body->with('mj-section')
+                ->with('mj-column')
+                    ->backgroundColor('#ED8936')
+                        ->with('mj-text', "&#8212;&#8212;&nbsp;Zahper")
+                            ->letterSpacing('0px')
+                            ->align('right')
+                            ->paddingRight('50px')
+                            ->paddingTop('25px')
+                            ->paddingBottom('25px')
+                            ->fontSize('25px')
+                            ->color('#FFFFFF');
+
+        // Hi there.
+        $body->with('mj-section')
+                ->padding('40px')
+                ->backgroundColor('#FFFFFF')
+                    ->with('mj-column')
+                        ->with('mj-text', "Hi there!")
+                            ->align('center')
+                            ->color('#1A202C')
+                            ->fontSize('20px');
+
+        // Welcome to Zahper.
+        $body->with('mj-section')
+                ->paddingLeft('20px')
+                ->paddingRight('20px')
+                ->backgroundColor('#FFFFFF')
+                    ->with('mj-column')
+                        ->with('mj-text', "Welcome to Zahper")
+                            ->align('center');
+
+        // 2 buttons with links.
+        $body->with('mj-section')
+                ->backgroundColor('#FFFFFF')
+                    ->with('mj-column')
+                        ->with('mj-button', "Go to your Web App")
+                            /**
+                             * This is how you should use dynamic values
+                             * so they are not cached. You compute them in
+                             * the blade view and not in the method.
+                             *
+                             * This will not cache:
+                             * ->href("{{ url('/') }}")
+                             *
+                             * This will cache:
+                             * ->href(url('/'))
+                             */
+                            ->href("{{ url('/') }}")
+                            ->target('_blank')
+                            ->backgroundColor('#2C5281')
+                            ->paddingTop('20px')
+                            ->parent()
+                        ->parent()
+                    ->with('mj-column')
+                        ->with('mj-button', "Go to Zahper Github")
+                            ->href("https://github.com/brunocfalcao/zahper")
+                            ->target('_blank')
+                            ->backgroundColor('#29AA66')
+                            ->paddingTop('20px');
+
+        // Baseline text.
+        $body->with('mj-section')
+                ->backgroundColor('#FFFFFF')
+                ->paddingTop('20px')
+                ->paddingBottom('20px')
+                ->backgroundColor('#FFFFFF')
+                    ->with('mj-column')
+                        ->with('mj-text', "This is a zahper mailable example<br/> <strong>Now go and build your amazing newsletter using Zahper!")
+                            ->align('center')
+                            ->fontSize('12px')
+                            ->color('#A0AEC0');
+
+        $body->with('mj-section')
+                ->with('mj-column')
+                    ->backgroundColor('#ED8936')
+                        ->with('mj-text', "<a class='text-link' href='https://twitter.com/brunocfalcao'>Made by @brunocfalcao</a>&nbsp;&nbsp;&nbsp;<a class='text-link' href='https://www.github.com/brunocfalcao/zahper'>Zahper on Github</a>&nbsp;&nbsp;&nbsp;<a class='text-link' href='https://www.clix.pt/email/unsubscribe/12345'>Unsubscribe</a>")
+                            ->align('center')
+                            ->paddingTop('5px')
+                            ->paddingBottom('5px')
+                            ->fontSize('12px')
+                            ->color('#FFFFFF');
+
+        // Footer spacer.
+        $body->with('mj-section')
+                ->with('mj-column')
+                    ->with('mj-spacer')
+                        ->height('50px');
 
         return $mjml;
     }
