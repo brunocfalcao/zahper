@@ -63,7 +63,7 @@ Run the following artisan command:
 php artisan zahper:mailable DemoEmail --demo
 ```
 
-Navigate in your local laravel app to the url /zahper/demo. [Et voilá](https://www.deepl.com/translator#fr/en/et%20voil%C3%A1!%7CThere%20you%20go.)!
+Navigate in your local laravel app to the url /zahper/demo. [Et voilá](https://www.deepl.com/translator#fr/en/et%20voil%C3%A1!%7CThere%20you%20go.), you should see a mailable demo.
 
 
 
