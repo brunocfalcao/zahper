@@ -305,6 +305,7 @@ ZahpController@unsubscribe action:
 - [x] Finish testing in production environments.
 - [x] Close Beta release.
 - [ ] Additional testing in multi-parallelism using job queues.
+- [ ] Adding testing scenarios.
 - [x] Release for General Public use.
 
 ## Contributing
@@ -313,4 +314,4 @@ At the moment you don't need to contribute since Zahper is still in early-produc
 
 ## License
 
-Waygou Flame is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Zahper is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
