@@ -4,6 +4,7 @@ namespace Brunocfalcao\Zahper\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Mail\DemoEmail;
+use Brunocfalcao\Zahper\ZahperUnsubscribeEvent;
 use Illuminate\Support\Facades\File;
 
 class ZahperController extends Controller
@@ -21,8 +22,9 @@ class ZahperController extends Controller
     /**
      * View in browser.
      *
-     * @param  string $uuid [description]
-     * @return [type]       [description]
+     * @param  string $uuid
+     *
+     * @return Illuminate\Http\Response
      */
     public function view(string $uuid)
     {
@@ -33,5 +35,22 @@ class ZahperController extends Controller
             return response(file_get_contents($filePath), 200)
                    ->header('Content-Type', 'text/html');
         }
+    }
+
+    /**
+     * Unsubscribe your email related uuid.
+     * Only this is to trigger an event, that you should have a listener
+     * attached to. If you want to use your own logic feel free to change
+     * the zahper.php config file.
+     *
+     * @param  string $uuid
+     *
+     * @return Illuminate\Http\Response
+     */
+    public function unsubscribe(string $uuid)
+    {
+        event(new ZahperUnsubscribeEvent($uuid));
+
+        return response('Thank you, you have been unsubscribed!', 200);
     }
 }

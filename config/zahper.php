@@ -65,6 +65,36 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Zahper routes
+    |--------------------------------------------------------------------------
+    |
+    | You can use 2 pre-defined routes to view an email in browser and to
+    | unsubscribe. There are 2 helpers that you can use them in your views:
+    |
+    | zhp_url_view_in_browser()
+    | zhp_url_unsubscribe()
+    |
+    | Example:
+    | [..]->with('mj-button', 'Click here to unsubscribe')
+    |         ->href("{{ zhp_url_unsubscribe() }}")
+    |
+    */
+    'routes' => [
+
+        'view-in-browser' => [
+            'route' => 'zahper/view/{uuid}',
+            'action' => 'ZahperController@view',
+        ],
+
+        'unsubscribe' => [
+            'route' => 'zahper/unsubscribe/{uuid}',
+            'action' => 'ZahperController@unsubscribe',
+        ],
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Storage paths
     |--------------------------------------------------------------------------
     |
