@@ -1,4 +1,4 @@
-<p align="center"><img src="https://assets.waygou.com/zahper-github-header.jpg" width="150"></p>
+<p align="center"><img src="https://assets.waygou.com/zahper-github-header_v2.jpg" width="130"></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/brunocfalcao/zahper"><img src="https://poser.pugx.org/brunocfalcao/zahper/v/stable.svg" alt="Latest Stable Version"></a>
@@ -7,54 +7,65 @@
 
 ## About Zahper
 
-Zahper is a Laravel Mailable on-steroids that let's you create cross-browser email newsletters using [MJML](https://mjml.io).
+Zahper is a [Laravel](https://www.laravel.com) *on-steroids* Mailable that lets you create beautiful cross-browser email newsletters using [MJML](https://mjml.io).
 
 ## Why Zahper
 
 Zahper will solve you these problems:
-* Frustration of creating email templates, and at the end verifying they are not browser-compatible
-* Annoyance of having to recreate email templates without a common base template structure to kick off
-* Complexity of creating view in browser logic, ensuring a storage/db model
+* Frustration of creating email templates, and at the end verifying they are not browser-compatible.
+* Annoyance of having to recreate email templates without a common base template structure to kick off.
+* Complexity of creating "view in browser" links, like having to create a db/file model for storage.
 * Rebuilding a Laravel package to send emails.
 
 ## Zahper Features
 
-
 You get all of this out-of-the-box:
-* Build your MJML template in an eloquent way, directly on your Mailable class
-* Automatic MJML compilation via the [MJML Api](https://mjml.io/api)
-* Caching mechanism, so you don't make 500 Api calls, when you send 500 emails
-* Automatic "view in browser" link generation, in case you want to redirect your users to view the email in the browser
-* High customizable (storage and views cache, image rendering types, etc) via a config file
-* Automatic image CID / URL rendering
-* Already being used in masteringnova.com, Laraning and Laraflash.
-*
-
-## Why Flame
-
-I've built Flame because I was starting to have medium size web apps (like [Laraning](https://www.laraning.com) or [Laraflash](https://www.laraflash.com)) with a lot of Blade views, Blade Components, etc.
-It was starting to be difficult to organize my features in a way that I could load data inside those views given for the respective controller action that I was running at a certain moment.
-
-> A thought came to me: "What if I have a way to know automatically what actions am I running and then automatically load my graphical
-layout accordingly to that action, reusing the layout and not just create more and more views?"
-
-That's where Flame started. Flame will automate this behaviour for you. Let's see how.
+* Build your MJML template in an eloquent way, directly on your Mailable class, using all the MJML features and components.
+* Automated MJML to Blade view compilation via the [MJML Api](https://mjml.io/api).
+* Caching mechanism, so you don't make 500 Api calls, when you send 500 emails.
+* Automatic "view in browser" link generation, in case you want to redirect your users to view the email in the browser.
+* High customizable (storage and views cache, image rendering types, etc) via a config file.
+* Automatic image [CID / URL](https://laravel.com/docs/7.x/mail#inline-attachments) rendering.
+* Already being used in [masteringnova.com](https://www.masteringnova.com), [Laraning](https://www.laraning.com) and [Laraflash](https://www.laraflash.com).
+* You can also use the full original Mailable class capabilites since Zahper inherits from the Laravel [Mailable](https://laravel.com/docs/7.x/mail) class.
 
 ## Installation
 
-You can install this package via composer using this command:
+You can install Zahper via composer using this command:
 
 ```bash
 composer require brunocfalcao/zahper
 ```
 
-###### The package will automatically register itself (using [auto-discover](https://laravel-news.com/package-auto-discovery)).
+###### The package will automatically register the service provider (using [auto-discover](https://laravel-news.com/package-auto-discovery)).
 
 Next step is to publish the flame.php configuration file into your config folder.
 
 ```bash
-php artisan vendor:publish --tag=flame-configuration
+php artisan vendor:publish --tag=zahper-config
 ```
+
+Final step is to install your mjml.io api keys in your .ENV configuration.
+
+```bash
+ZAHPER_API_URL=https://api.mjml.io/v1/render
+ZAHPER_API_APPLICATION_ID=<your application id>
+ZAHPER_API_SECRET_KEY=<your secret key>
+```
+##### :point_right: You need to register for the Api keys for your [MJML api application here](https://mjml.io/api/).
+
+## No time to wait?
+
+After having your api keys in your .ENV file, just do this for a quick email demo:
+
+Run the following artisan command:
+```bash
+php artisan zahper:mailable DemoEmail --demo
+```
+
+Go to your routes folder
+
+
 
 All done! :smile:
 
