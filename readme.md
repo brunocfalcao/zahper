@@ -215,7 +215,15 @@ The way you turn on, or off the Mailable cache is in your generated Zahper Maila
     }
 ```
 
-You should keep it off until you have your newsletter struture all fine tuned. Then you turn it on and the MJML Api, for this Mailable, will not be called again until you turn it on again.
+:exclamation: Keep it off until you have your newsletter structure all fine tuned. Then you turn it on and the MJML Api, for this Mailable, will not be called again until you turn it on again.
+
+#### Using dynamic values on your Zahper Mailable
+
+Let's say you want to have, for instance, a dynamic URL in a Button href attribute.
+
+```mjml
+    <mj-button href="{{ $myurl }}">Click here to Browse</mj-button>
+```
 
 
 
