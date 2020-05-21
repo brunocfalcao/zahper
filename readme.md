@@ -39,7 +39,7 @@ composer require brunocfalcao/zahper
 
 ###### The package will automatically register the service provider (using [auto-discover](https://laravel-news.com/package-auto-discovery)).
 
-Next step is to publish the flame.php configuration file into your config folder.
+Next step is to publish the zahper.php configuration file into your config folder.
 
 ```bash
 php artisan vendor:publish --tag=zahper-config
@@ -63,7 +63,7 @@ Run the following artisan command:
 php artisan zahper:mailable DemoEmail --demo
 ```
 
-Go to your routes folder
+Navigate in your local laravel app to the url /zahper/demo. [Et voilá](https://www.deepl.com/translator#fr/en/et%20voil%C3%A1!%7CThere%20you%20go.)!
 
 
 
