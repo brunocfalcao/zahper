@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get(
     config('zahper.routes.view-in-browser.route'),
-    config('zahper.routes.view-in-browser.controller')
-);
+    config('zahper.routes.view-in-browser.action')
+)->name('zahper.view-in-browser');
 
 Route::get(
     config('zahper.routes.unsubscribe.route'),
-    config('zahper.routes.unsubscribe.controller')
-);
+    config('zahper.routes.unsubscribe.action')
+)->name('zahper.unsubscribe');
+;
 
 if (config('zahper.demo')) {
     Route::get('zahper/demo', 'ZahperController@demo');

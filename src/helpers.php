@@ -17,3 +17,17 @@ if (! function_exists('create_disk')) {
         );
     }
 }
+
+if (! function_exists('zhp_url_unsubscribe()')) {
+    function zhp_url_unsubscribe($uuid)
+    {
+        return route('zahper.unsubscribe', ['uuid' => $uuid]);
+    }
+}
+
+if (! function_exists('zhp_url_view_in_browser()')) {
+    function zhp_url_view_in_browser($uuid)
+    {
+        return route('zahper.view-in-browser', ['uuid' => $uuid]);
+    }
+}
