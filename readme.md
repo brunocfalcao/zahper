@@ -81,19 +81,20 @@ Additionally it leverages the full features of the Laravel Mailable that you can
 php artisan zahper:mailable WelcomeMailable
 ```
 
-> This command will create your Mailable in the app\Mail folder.
+> This command will create your new mailable in the app\Mail folder.
 
-2. Inside your zahper mailable, you should check the following methods:
+2. Inside your zahper mailable, you have the following methods:
 ```php
 
     public function __construct()
     {
         // --- Zahper code ---
         ZahperTemplate::$cache = false;
-        [...]
+        // [...]
         // --- /Zahper code ---
     }
 ```
+The $cache static attribute will allow you to cache your MJML compiled view, so in case you have 500 emails to be sent, you don't call the MJML api 500 times. You should make it false until you tested your newsletter and finally turn it true when you decide to use it in your website.
 
 ## Current development status
 - [x] Finish core development.
