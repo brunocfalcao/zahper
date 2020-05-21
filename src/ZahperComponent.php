@@ -89,7 +89,7 @@ class ZahperComponent
         $text = null;
         $attributes = [];
 
-        /**
+        /*
          * We can have a with(<component>)
          * or
          * We can have a with(<component>, <inner text>)

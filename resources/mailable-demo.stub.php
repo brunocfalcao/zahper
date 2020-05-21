@@ -52,10 +52,10 @@ class classname extends ZahperMailable implements ShouldQueue
         $head = $mjml->with('mj-head');
 
         $head->with('mj-preview', 'Zahper Demo');
-        $head->with('mj-style', ".text-link { color: #FFFFFF }");
+        $head->with('mj-style', '.text-link { color: #FFFFFF }');
         $head->with('mj-font')
                 ->name('Nunito')
-                ->href("https://fonts.googleapis.com/css?family=Nunito");
+                ->href('https://fonts.googleapis.com/css?family=Nunito');
 
         $head->with('mj-attributes')
                 ->with('mj-all')
@@ -79,7 +79,7 @@ class classname extends ZahperMailable implements ShouldQueue
         $body->with('mj-section')
                 ->with('mj-column')
                     ->backgroundColor('#ED8936')
-                        ->with('mj-text', "&#8212;&#8212;&nbsp;Zahper")
+                        ->with('mj-text', '&#8212;&#8212;&nbsp;Zahper')
                             ->letterSpacing('0px')
                             ->align('right')
                             ->paddingRight('50px')
@@ -93,7 +93,7 @@ class classname extends ZahperMailable implements ShouldQueue
                 ->padding('40px')
                 ->backgroundColor('#FFFFFF')
                     ->with('mj-column')
-                        ->with('mj-text', "Hi there!")
+                        ->with('mj-text', 'Hi there!')
                             ->align('center')
                             ->color('#1A202C')
                             ->fontSize('20px');
@@ -104,15 +104,15 @@ class classname extends ZahperMailable implements ShouldQueue
                 ->paddingRight('20px')
                 ->backgroundColor('#FFFFFF')
                     ->with('mj-column')
-                        ->with('mj-text', "Welcome to Zahper")
+                        ->with('mj-text', 'Welcome to Zahper')
                             ->align('center');
 
         // 2 buttons with links.
         $body->with('mj-section')
                 ->backgroundColor('#FFFFFF')
                     ->with('mj-column')
-                        ->with('mj-button', "Go to your Web App")
-                            /**
+                        ->with('mj-button', 'Go to your Web App')
+                            /*
                              * This is how you should use dynamic values
                              * so they are not cached. You compute them in
                              * the blade view and not in the method.
@@ -130,8 +130,8 @@ class classname extends ZahperMailable implements ShouldQueue
                             ->parent()
                         ->parent()
                     ->with('mj-column')
-                        ->with('mj-button', "Go to Zahper Github")
-                            ->href("https://github.com/brunocfalcao/zahper")
+                        ->with('mj-button', 'Go to Zahper Github')
+                            ->href('https://github.com/brunocfalcao/zahper')
                             ->target('_blank')
                             ->backgroundColor('#29AA66')
                             ->paddingTop('20px');
@@ -143,7 +143,7 @@ class classname extends ZahperMailable implements ShouldQueue
                 ->paddingBottom('20px')
                 ->backgroundColor('#FFFFFF')
                     ->with('mj-column')
-                        ->with('mj-text', "This is a zahper mailable example<br/> <strong>Now go and build your amazing newsletter using Zahper!")
+                        ->with('mj-text', 'This is a zahper mailable example<br/> <strong>Now go and build your amazing newsletter using Zahper!')
                             ->align('center')
                             ->fontSize('12px')
                             ->color('#A0AEC0');
@@ -151,7 +151,7 @@ class classname extends ZahperMailable implements ShouldQueue
         $body->with('mj-section')
                 ->with('mj-column')
                     ->backgroundColor('#ED8936')
-                        ->with('mj-text', "<a class='text-link' href='https://twitter.com/brunocfalcao'>Made by @brunocfalcao</a>&nbsp;&nbsp;&nbsp;<a class='text-link' href='https://www.github.com/brunocfalcao/zahper'>Zahper on Github</a>&nbsp;&nbsp;&nbsp;<a class='text-link' href='https://www.clix.pt/email/unsubscribe/12345'>Unsubscribe</a>")
+                        ->with('mj-text', "<a class='text-link' href='https://twitter.com/brunocfalcao'>Made by @brunocfalcao</a>&nbsp;&nbsp;&nbsp;<a class='text-link' href='https://www.github.com/brunocfalcao/zahper'>Zahper on Github</a>&nbsp;&nbsp;&nbsp;<a class='text-link' href='{{ zhp_url_unsubscribe(\$zhp_uuid) }}'>Unsubscribe</a>&nbsp;&nbsp;&nbsp;<a class='text-link' href='{{ zhp_url_view_in_browser(\$zhp_uuid) }}'>View in Browser</a>")
                             ->align('center')
                             ->paddingTop('5px')
                             ->paddingBottom('5px')

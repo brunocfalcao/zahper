@@ -27,7 +27,6 @@ Route::get(
     config('zahper.routes.unsubscribe.route'),
     config('zahper.routes.unsubscribe.action')
 )->name('zahper.unsubscribe');
-;
 
 if (config('zahper.demo')) {
     Route::get('zahper/demo', 'ZahperController@demo');

@@ -68,10 +68,9 @@ return [
     | Zahper routes
     |--------------------------------------------------------------------------
     |
-    | You can define any of your routes and controller actions here for the
-    | view in browser and unsubscribe actions.
+    | You can use 2 pre-defined routes to view an email in browser and to
+    | unsubscribe. There are 2 helpers that you can use them in your views:
     |
-    | There are 2 helpers that you can use them in your views:
     | zhp_url_view_in_browser()
     | zhp_url_unsubscribe()
     |
@@ -92,7 +91,6 @@ return [
             'action' => 'ZahperController@unsubscribe',
         ],
     ],
-
 
     /*
     |--------------------------------------------------------------------------
