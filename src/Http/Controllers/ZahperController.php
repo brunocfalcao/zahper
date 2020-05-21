@@ -3,7 +3,7 @@
 namespace Brunocfalcao\Zahper\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Mail\DemoEmail;
+use App\Mail\ZahperDemoMailable;
 use Brunocfalcao\Zahper\ZahperUnsubscribeEvent;
 use Illuminate\Support\Facades\File;
 
@@ -16,7 +16,7 @@ class ZahperController extends Controller
 
     public function demo()
     {
-        return new DemoEmail();
+        return new ZahperDemoMailable();
     }
 
     /**

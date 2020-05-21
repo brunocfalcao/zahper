@@ -48,6 +48,7 @@ class ZahperServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                     ZahperCreateMailableCommand::class,
+                    ZahperCreateDemoCommand::class,
                 ]);
         }
     }

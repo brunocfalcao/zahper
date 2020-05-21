@@ -4,14 +4,14 @@ namespace Brunocfalcao\Zahper;
 
 use Illuminate\Console\Command;
 
-class ZahperCreateMailableCommand extends Command
+class ZahperCreateDemoCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'zahper:mailable {name : Mailable name}';
+    protected $signature = 'zahper:demo';
 
     /**
      * The console command description.
@@ -55,20 +55,20 @@ class ZahperCreateMailableCommand extends Command
 
         // Read stub and copy file.
 
-        $filePath = $path.$this->argument('name').'.php';
+        $filePath = $path.'ZahperDemoMailable.php';
 
         $content = str_replace(
             'classname',
-            $this->argument('name'),
-            file_get_contents(__DIR__.'/../resources/mailable.stub.php')
+            'ZahperDemoMailable',
+            file_get_contents(__DIR__.'/../resources/mailable-demo.stub.php')
         );
 
         file_put_contents($filePath, $content);
 
-        $this->info('Created your Zahper mailable in '.$path.$this->argument('name').'.php');
+        $this->info('Created your Zahper demo in '.$path.'/ZahperDemoMailable.php');
 
         $this->info('');
 
-        $this->info('Now use the power of MJML and build that awesome newsletter!');
+        $this->info('You can check it out in '.route('zahper.demo'));
     }
 }
