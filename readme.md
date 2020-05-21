@@ -232,10 +232,24 @@ You then should write it this way:
                 ->href("{{ route('welcome', ['user_id' => \$id]) }}")
 ```
 
-:exclamation: If you write it this way below, the user id will get cached!
+:exclamation: If you write it this way below, the user id will get cached. So you will send 500 emails, to 500 recipients, all of them with the same user id!
+
 ```php
     $button = ZahperComponent::make('mj-button')
                 ->href(route('welcome', ['user_id' => \$id]))
+```
+
+## View in Browser
+
+For each sent email, Zahper stores a copy in your storage folder with a distinct UUID.
+You can access this UUID only during the lifecycle of the Mailable. After that it's discarded and re-generated again.
+
+The UUID is accessed in your mailable via:
+
+```php
+    [...]
+    $uuid = $this->zhp_uuid;
+    [...]
 ```
 
 
