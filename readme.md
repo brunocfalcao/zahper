@@ -94,7 +94,44 @@ php artisan zahper:mailable WelcomeMailable
         // --- /Zahper code ---
     }
 ```
-The $cache static attribute will allow you to cache your MJML compiled view, so in case you have 500 emails to be sent, you don't call the MJML api 500 times. You should make it false until you tested your newsletter and finally turn it true when you decide to use it in your website.
+The $cache static attribute will allow you to cache your MJML compiled view, so in case you have 500 emails to be sent, you don't call the MJML api 500 times. You should make it false until you tested your newsletter and finally turn it true when you decide to use it in your website. More about the cache later in this readme.
+
+```php
+
+    protected function template()
+    {
+        $mjml = ZahperComponent::make();
+
+        $head = $mjml->with('mj-head');
+        // $head->with(...)
+
+        $body = $mjml->with('mj-body');
+        // $body->with(...)
+
+        return $mjml;
+    }
+```
+This is where the magic happens. You will write your MJML and Zahper will call the MJML api to compile it to a view.
+As a quick example (more examples later in this readme) the following MJML:
+
+```mjml
+
+    <mj-section>
+        <mj-column>
+            <mj-text>Hi there!</mj-text>
+        </mj-column>
+    </mj-section>
+```
+
+is written in Zahper like this:
+
+```php
+
+    $section = ZahperComponent::make('mj-section')
+               ->with('mj-column')
+                   ->with('mj-text', 'Hi there!');
+
+```
 
 ## Current development status
 - [x] Finish core development.
