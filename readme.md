@@ -84,8 +84,8 @@ php artisan zahper:mailable WelcomeMailable
 > This command will create your new mailable in the app\Mail folder.
 
 2. Inside your zahper mailable, you have the following methods:
-```php
 
+```php
     public function __construct()
     {
         // --- Zahper code ---
@@ -97,7 +97,6 @@ php artisan zahper:mailable WelcomeMailable
 The $cache static attribute will allow you to cache your MJML compiled view, so in case you have 500 emails to be sent, you don't call the MJML api 500 times. You should make it false until you tested your newsletter and finally turn it true when you decide to use it in your website. More about the cache later in this readme.
 
 ```php
-
     protected function template()
     {
         $mjml = ZahperComponent::make();
@@ -115,7 +114,6 @@ This is where the magic happens. You will write your MJML and Zahper will call t
 As a quick example (more examples later in this readme) the following MJML:
 
 ```mjml
-
     <mj-section>
         <mj-column>
             <mj-text>Hi there!</mj-text>
@@ -126,12 +124,52 @@ As a quick example (more examples later in this readme) the following MJML:
 is written in Zahper like this:
 
 ```php
-
     $section = ZahperComponent::make('mj-section')
                ->with('mj-column')
                    ->with('mj-text', 'Hi there!');
 
 ```
+
+and the final method:
+
+```php
+    public function build()
+    {
+        $this
+            ->from(
+                'you@example.com',
+                'You from Example.com'
+            )
+            ->subject('Nice subject out here!');
+
+        parent::build();
+    }
+```
+
+Is used to configure your Mailable "from" recipient and the subject.
+
+:point_up: All the Laravel Mailable features are available for you, except the "build" method. As example, you can pass public attributes, and they will also be available in the MJML rendered view!
+
+## How do you code the MJML
+
+Coding your MJML is made in a very natural way.
+
+1. You create the component:
+
+```php
+    $body = ZahperComponent::make('mj-section');
+```
+
+2. You then add all your attributes in 2 ways, as example:
+
+```php
+    $body->align('center')
+    
+    or 
+    
+    $body = ZahperComponent::make('mj-section', ['align' => 'center');
+```
+
 
 ## Current development status
 - [x] Finish core development.
