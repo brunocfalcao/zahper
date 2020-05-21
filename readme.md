@@ -252,6 +252,17 @@ The UUID is accessed in your mailable via:
     [...]
 ```
 
+You can also configure the route and action called directly in the zahper configuration file.
+
+Also, you have a helper that will generate the full url for you, so you can use it on your MJML code:
+```php
+    [...]
+        ->with('mj-button', 'View in Browser')
+            ->href("{{ zhp_url_view_in_browser(\$zhp_uuid) }}")
+            ->target('_blank');
+    [...]
+```
+
 
 
 ## Current development status
