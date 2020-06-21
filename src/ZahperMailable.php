@@ -19,7 +19,7 @@ abstract class ZahperMailable extends Mailable
     {
         $template = ZahperTemplate::make($this->template(), $this->templateName());
 
-        $template->renderAndStore($this->buildViewData());
+        $template->renderAndStore($this->zhp_uuid, $this->buildViewData());
 
         $output = $this
             // This is the main html view that will use the html variable.

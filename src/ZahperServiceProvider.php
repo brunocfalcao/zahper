@@ -11,7 +11,7 @@ class ZahperServiceProvider extends ServiceProvider
     {
         // Register zahper disks.
         create_disk('zahper-views', app('config')->get('zahper.storage.paths.views'));
-        create_disk('zahper-browser', app('config')->get('zahper.storage.paths.emails'));
+        create_disk('zahper-emails', app('config')->get('zahper.storage.paths.emails'));
 
         // Register views, in order to be used by the Zahper Mailable.
         $this->loadViewsFrom(app('config')->get('zahper.storage.paths.views'), 'zahper');

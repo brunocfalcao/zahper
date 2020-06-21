@@ -85,14 +85,14 @@ class ZahperTemplate
      *
      * @return void
      */
-    public function renderAndStore(array $viewData = [])
+    public function renderAndStore(string $uuid, array $viewData = [])
     {
         $content = View::make('zahper::'.$this->getName().'-html')
                        ->with($viewData)
                        ->render();
 
-        Storage::disk('zahper-browser')->put(
-            static::$uuid.'.html',
+        Storage::disk('zahper-emails')->put(
+            $uuid.'.html',
             $content
         );
     }
